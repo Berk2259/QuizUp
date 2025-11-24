@@ -20,6 +20,7 @@ class _BottombarScrenState extends State<BottombarScren> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: page[selectedIndex],
       bottomNavigationBar: customBottomNavBar(),
     );
