@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 
+//Ana sayfadaki main quesiton parçaları burada bulunuyor
 class QuestionContainer extends StatelessWidget {
   final String imagePath;
   final String title;
   final String subtitle;
+  final VoidCallback page;
+
   const QuestionContainer({
     super.key,
     required this.imagePath,
     required this.title,
     required this.subtitle,
+    required this.page
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+      padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
       child: GestureDetector(
-        onDoubleTap: () {},
+        onDoubleTap: page,
         child: Container(
           width: double.infinity,
           height: 100,

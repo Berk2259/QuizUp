@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:quizup/Components/components.dart';
 import 'package:quizup/Containers/containers.dart';
+import 'package:quizup/QuesionScreens/question_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,16 +12,7 @@ class HomeScreen extends StatelessWidget {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color(0xFF1E293B), // Koyu mavi-gri
-              Color(0xFF334155), // Bir tık daha açık
-            ],
-          ),
-        ),
+        decoration: BackgroundPage.backgroundGradient(),
         child: SafeArea(
           child: Column(
             children: [
@@ -29,11 +22,25 @@ class HomeScreen extends StatelessWidget {
                     imagePath: 'assets/icons/tools.png',
                     title: 'Matematik Souları',
                     subtitle: 'Matematik Sorularını görmek için çift tıklayın',
+                    page: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MatematikScreen(),
+                        ),
+                      );
+                    },
                   ),
                   QuestionContainer(
-                    imagePath: 'assets/icons/tools.png',
-                    title: 'Matematik Souları',
-                    subtitle: 'Matematik Sorularını görmek için çift tıklayın',
+                    imagePath: 'assets/icons/flag.png',
+                    title: 'Bayrak Soruları',
+                    subtitle: 'Bayrak Sorularını görmek için çift tıklayın',
+                    page: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => BayrakScren()),
+                      );
+                    },
                   ),
                 ],
               ),

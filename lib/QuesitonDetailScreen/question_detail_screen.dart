@@ -1,0 +1,1 @@
+export 'bayrak_detail_screen.dart';
