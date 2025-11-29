@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:quizup/Components/components.dart';
 import 'package:quizup/QuesitonDetailScreen/question_detail_screen.dart';
 
-//Ana Sayfadan Bayrağın içine girilince Başlama kısmı burada bulunuyor
 class BayrakScren extends StatelessWidget {
   const BayrakScren({super.key});
 
@@ -13,32 +12,47 @@ class BayrakScren extends StatelessWidget {
         width: double.infinity,
         height: double.infinity,
         decoration: BackgroundPage.backgroundGradient(),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+        child: Stack(
           children: [
-            Spacer(),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                textAlign: TextAlign.center,
-                'Bayrak tahmin quizine hoşgeldiniz.Bu quiz toplamda 10 sorudan oluşmaktadır Soruları görmek için devam butonuna Tıklayın',
-                style: TextStyle(color: Colors.white, fontSize: 20),
+            Positioned(
+              top: 60,
+              left: 16,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Image.asset('assets/icons/back.png', scale: 15),
               ),
             ),
-            Spacer(),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Button(
-                buttonName: 'Devam Et',
-                buttonTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => BayrakDetailScreen(),
-                    ),
-                  );
-                },
+
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  'Bayrak tahmin quizine hoşgeldiniz. Bu quiz toplamda 10 sorudan oluşmaktadır. Soruları görmek için devam butonuna tıklayın.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
+            ),
+
+            Positioned(
+              bottom: 10,
+              left: 0,
+              right: 0,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Button(
+                  buttonName: 'Devam Et',
+                  buttonTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BayrakDetailScreen(),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
           ],

@@ -13,7 +13,7 @@ class BayrakDetailScreen extends StatefulWidget {
 
 class _BayrakDetailScreenState extends State<BayrakDetailScreen> {
   int _currentIndex = 0;
-  List<Map<String, dynamic>> _questions = [];
+  List<Map<String, dynamic>> _bayrakquestions = [];
   bool _isLoading = true;
 
   @override
@@ -25,11 +25,11 @@ class _BayrakDetailScreenState extends State<BayrakDetailScreen> {
   // Firestore'dan soruları çekiyoruz
   Future<void> _loadQuestions() async {
     QuerySnapshot snapshot = await FirebaseFirestore.instance
-        .collection('questions')
+        .collection('bayrakquestions')
         .get();
 
     setState(() {
-      _questions = snapshot.docs
+      _bayrakquestions = snapshot.docs
           .map((doc) => doc.data() as Map<String, dynamic>?)
           .where((element) => element != null)
           .cast<Map<String, dynamic>>()
@@ -39,9 +39,9 @@ class _BayrakDetailScreenState extends State<BayrakDetailScreen> {
   }
 
   void _nextQuestion() {
-    if (_questions.isEmpty) return; // liste boşsa çık
+    if (_bayrakquestions.isEmpty) return; // liste boşsa çık
     setState(() {
-      if (_currentIndex < _questions.length - 1) {
+      if (_currentIndex < _bayrakquestions.length - 1) {
         _currentIndex++;
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -60,7 +60,7 @@ class _BayrakDetailScreenState extends State<BayrakDetailScreen> {
   }
 
   void _lastQuestion() {
-    if (_questions.isEmpty) return; // liste boşsa çık
+    if (_bayrakquestions.isEmpty) return; // liste boşsa çık
     setState(() {
       if (_currentIndex > 0) {
         _currentIndex--;
@@ -87,11 +87,11 @@ class _BayrakDetailScreenState extends State<BayrakDetailScreen> {
     }
 
     // Mevcut soru
-    var currentQuestion = _questions[_currentIndex];
+    var currentQuestion = _bayrakquestions[_currentIndex];
 
     // Null güvenli alanlar
     String question = currentQuestion['question'] ?? 'Soru yok';
-    String image = currentQuestion['image'] ?? 'default.png';
+    String image = currentQuestion['image'] ?? '';
     Map<String, dynamic> options = {};
     if (currentQuestion['options'] != null) {
       options = Map<String, dynamic>.from(currentQuestion['options']);
@@ -101,62 +101,81 @@ class _BayrakDetailScreenState extends State<BayrakDetailScreen> {
         width: double.infinity,
         height: double.infinity,
         decoration: BackgroundPage.backgroundGradient(),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Stack(
           children: [
-            Text(
-              'Aşağıdaki Bayrak Hangi Ülkeye Aittir.',
-              style: TextStyle(color: Colors.white, fontSize: 18),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: CircleAvatar(
-                radius: 50,
-                child: Image.asset('assets/flags/$image'),
+            Positioned(
+              top: 60,
+              left: 16,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Image.asset('assets/icons/back.png', scale: 15),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 30.0),
+            Center(
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Row(
-                    children: [
-                      QuizOptionContainer(
-                        optionColor: Colors.blue,
-                        optionTitle: 'A',
-                        optionDescription: options['A'] ?? '',
-                        correctAnswer: currentQuestion['answer'],
-                      ),
-                      QuizOptionContainer(
-                        optionColor: Colors.yellow,
-                        optionTitle: 'B',
-                        optionDescription: options['B'] ?? '',
-                        correctAnswer: currentQuestion['answer'],
-                      ),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 12.0),
+                    child: Text(
+                      'Aşağıdaki Bayrak Hangi Ülkeye Aittir.',
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                  Row(
+                  const SizedBox(height: 25),
+                  CircleAvatar(
+                    radius: 50,
+                    child: Image.asset('assets/flags/$image.png'),
+                  ),
+                  const SizedBox(height: 25),
+                  Column(
                     children: [
-                      QuizOptionContainer(
-                        optionColor: Colors.green,
-                        optionTitle: 'C',
-                        optionDescription: options['C'] ?? '',
-                        correctAnswer: currentQuestion['answer'],
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          QuizOptionContainer(
+                            optionColor: Colors.blue,
+                            optionTitle: 'A',
+                            optionDescription: options['A'] ?? '',
+                            correctAnswer: currentQuestion['answer'],
+                          ),
+                          QuizOptionContainer(
+                            optionColor: Colors.yellow,
+                            optionTitle: 'B',
+                            optionDescription: options['B'] ?? '',
+                            correctAnswer: currentQuestion['answer'],
+                          ),
+                        ],
                       ),
-                      QuizOptionContainer(
-                        optionColor: Colors.red,
-                        optionTitle: 'D',
-                        optionDescription: options['D'] ?? '',
-                        correctAnswer: currentQuestion['answer'],
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          QuizOptionContainer(
+                            optionColor: Colors.green,
+                            optionTitle: 'C',
+                            optionDescription: options['C'] ?? '',
+                            correctAnswer: currentQuestion['answer'],
+                          ),
+                          QuizOptionContainer(
+                            optionColor: Colors.red,
+                            optionTitle: 'D',
+                            optionDescription: options['D'] ?? '',
+                            correctAnswer: currentQuestion['answer'],
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ],
               ),
             ),
-
-            Padding(
-              padding: const EdgeInsets.all(16.0),
+            Positioned(
+              bottom: 20,
+              left: 16,
+              right: 16,
               child: Row(
                 children: [
                   Expanded(
