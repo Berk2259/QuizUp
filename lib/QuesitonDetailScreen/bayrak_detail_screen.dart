@@ -44,9 +44,17 @@ class _BayrakDetailScreenState extends State<BayrakDetailScreen> {
       if (_currentIndex < _questions.length - 1) {
         _currentIndex++;
       } else {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(const SnackBar(content: Text('Son soru')));
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Center(
+              child: Text(
+                'Şuan Son Soruda bulunuyorsunuz',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            backgroundColor: Colors.blue,
+          ),
+        );
       }
     });
   }
@@ -57,9 +65,17 @@ class _BayrakDetailScreenState extends State<BayrakDetailScreen> {
       if (_currentIndex > 0) {
         _currentIndex--;
       } else {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(const SnackBar(content: Text('İlk Soru')));
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Center(
+              child: Text(
+                'Şuan İlk Soruda bulunuyorsunuz',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            backgroundColor: Colors.blue,
+          ),
+        );
       }
     });
   }
@@ -109,11 +125,13 @@ class _BayrakDetailScreenState extends State<BayrakDetailScreen> {
                         optionColor: Colors.blue,
                         optionTitle: 'A',
                         optionDescription: options['A'] ?? '',
+                        correctAnswer: currentQuestion['answer'],
                       ),
                       QuizOptionContainer(
                         optionColor: Colors.yellow,
                         optionTitle: 'B',
                         optionDescription: options['B'] ?? '',
+                        correctAnswer: currentQuestion['answer'],
                       ),
                     ],
                   ),
@@ -123,11 +141,13 @@ class _BayrakDetailScreenState extends State<BayrakDetailScreen> {
                         optionColor: Colors.green,
                         optionTitle: 'C',
                         optionDescription: options['C'] ?? '',
+                        correctAnswer: currentQuestion['answer'],
                       ),
                       QuizOptionContainer(
                         optionColor: Colors.red,
                         optionTitle: 'D',
                         optionDescription: options['D'] ?? '',
+                        correctAnswer: currentQuestion['answer'],
                       ),
                     ],
                   ),
