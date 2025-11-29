@@ -29,8 +29,9 @@ class BayrakScren extends StatelessWidget {
             Spacer(),
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: ElevatedButton(
-                onPressed: () {
+              child: Button(
+                buttonName: 'Devam Et',
+                buttonTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -38,18 +39,6 @@ class BayrakScren extends StatelessWidget {
                     ),
                   );
                 },
-                child: Text('Devam Et'),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  side: BorderSide(width: 2.0),
-                  minimumSize: Size(double.infinity, 50),
-                  backgroundColor: Colors.blueAccent.shade700,
-                  foregroundColor: Colors.white,
-                  shadowColor: Colors.grey.shade900,
-                  elevation: 4,
-                ),
               ),
             ),
           ],
