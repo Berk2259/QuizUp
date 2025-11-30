@@ -130,7 +130,7 @@ class _BayrakDetailScreenState extends State<BayrakDetailScreen> {
                     radius: 50,
                     child: Image.asset('assets/flags/$image.png'),
                   ),
-                  const SizedBox(height: 25),
+                   
                   Column(
                     children: [
                       Row(
