@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizup/Components/components.dart'; // Button widget
+import 'package:quizup/Components/text_with_shadow.dart';
 import 'package:quizup/Screen/screen.dart'; // HomeScreen
 import 'package:quizup/Service/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -43,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void navigateHome() {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => RegisterScreen()),
+      MaterialPageRoute(builder: (context) => BottombarScren()),
     );
   }
 
@@ -66,20 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
               key: _formKey,
               child: Column(
                 children: [
-                  Text(
-                    'QuizUp',
-                    style: TextStyle(
-                      color: Colors.blueAccent.shade700,
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      shadows: [
-                        Shadow(offset: Offset(-1, -1), color: Colors.white),
-                        Shadow(offset: Offset(1, -1), color: Colors.white),
-                        Shadow(offset: Offset(1, 1), color: Colors.white),
-                        Shadow(offset: Offset(-1, 1), color: Colors.white),
-                      ],
-                    ),
-                  ),
+                  TextWithShadow(text: 'QuizUp', textColor: Colors.blueAccent.shade700, textSize: 40),
                   /* Container(
                     width: 140,
                     height: 140,

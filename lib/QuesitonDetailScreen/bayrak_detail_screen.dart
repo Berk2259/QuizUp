@@ -100,7 +100,7 @@ class _BayrakDetailScreenState extends State<BayrakDetailScreen> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BackgroundPage.backgroundGradient(),
+        decoration: BackgroundPage.backgroundPages(),
         child: Stack(
           children: [
             Positioned(
@@ -119,18 +119,23 @@ class _BayrakDetailScreenState extends State<BayrakDetailScreen> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(bottom: 12.0),
-                    child: Text(
+                    child: TextWithShadow(
+                      text: 'Aşağıdaki Bayrak Hangi Ülkeye Aittir.',
+                      textColor:Colors.black,
+                      textSize: 18,
+                    ),
+                    /* Text(
                       'Aşağıdaki Bayrak Hangi Ülkeye Aittir.',
                       style: TextStyle(color: Colors.white, fontSize: 18),
                       textAlign: TextAlign.center,
-                    ),
+                    ), */
                   ),
                   const SizedBox(height: 25),
                   CircleAvatar(
                     radius: 50,
                     child: Image.asset('assets/flags/$image.png'),
                   ),
-                   
+
                   Column(
                     children: [
                       Row(

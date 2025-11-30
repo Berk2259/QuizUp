@@ -11,7 +11,7 @@ class BayrakScren extends StatelessWidget {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BackgroundPage.backgroundGradient(),
+        decoration: BackgroundPage.backgroundPages(),
         child: Stack(
           children: [
             Positioned(
@@ -28,11 +28,17 @@ class BayrakScren extends StatelessWidget {
             Center(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: Text(
+                child: TextWithShadow(
+                  text:
+                      'Bayrak tahmin quizine hoşgeldiniz. Bu quiz toplamda 10 sorudan oluşmaktadır. Soruları görmek için devam butonuna tıklayın.',
+                  textColor: Colors.red,
+                  textSize: 20,
+                ),
+                /* Text(
                   'Bayrak tahmin quizine hoşgeldiniz. Bu quiz toplamda 10 sorudan oluşmaktadır. Soruları görmek için devam butonuna tıklayın.',
                   textAlign: TextAlign.center,
                   style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
+                ), */
               ),
             ),
 

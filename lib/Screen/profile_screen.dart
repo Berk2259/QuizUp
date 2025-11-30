@@ -11,7 +11,7 @@ class ProfileScreen extends StatelessWidget {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BackgroundPage.backgroundGradient(),
+        decoration:  BackgroundPage.backgroundPages(),
         child: Column(
           children: [
             SizedBox(height: 50),

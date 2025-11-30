@@ -2,15 +2,11 @@ import 'package:flutter/material.dart';
 
 //her sayfanın arka plan rengini burada tanımlıyoruz
 class BackgroundPage {
-  static BoxDecoration backgroundGradient() {
+  static BoxDecoration backgroundPages() {
     return const BoxDecoration(
-      gradient: LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [
-          Color(0xFF1E293B),
-          Color(0xFF334155),
-        ],
+      image: DecorationImage(
+        image: AssetImage('assets/images/page_background2.png'),
+        fit: BoxFit.cover,
       ),
     );
   }

@@ -68,20 +68,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               key: _formKey,
               child: Column(
                 children: [
-                   Text(
-                    'QuizUp',
-                    style: TextStyle(
-                      color: Colors.blueAccent.shade700,
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      shadows: [
-                        Shadow(offset: Offset(-1, -1), color: Colors.white),
-                        Shadow(offset: Offset(1, -1), color: Colors.white),
-                        Shadow(offset: Offset(1, 1), color: Colors.white),
-                        Shadow(offset: Offset(-1, 1), color: Colors.white),
-                      ],
-                    ),
-                  ),
+                   TextWithShadow(text: 'QuizUp', textColor: Colors.blueAccent.shade700, textSize: 40),
                   /* Container(
                     width: 140,
                     height: 140,
