@@ -53,6 +53,17 @@ class HomeScreen extends StatelessWidget {
                       );
                     },
                   ),
+                  QuestionContainer(
+                    imagePath: 'assets/icons/geography.png',
+                    title: 'Coğrafya Soruları',
+                    subtitle: 'Coğrafya Sorularını görmek için çift tıklayın',
+                    page: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => GeographyScreen()),
+                      );
+                    },
+                  ),
                 ],
               ),
             ],
