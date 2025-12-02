@@ -42,6 +42,17 @@ class HomeScreen extends StatelessWidget {
                       );
                     },
                   ),
+                  QuestionContainer(
+                    imagePath: 'assets/icons/history.png',
+                    title: 'Tarih Soruları',
+                    subtitle: 'Tarih Sorularını görmek için çift tıklayın',
+                    page: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => TarihScreen()),
+                      );
+                    },
+                  ),
                 ],
               ),
             ],
