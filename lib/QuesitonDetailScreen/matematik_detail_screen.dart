@@ -4,16 +4,16 @@ import 'package:quizup/Components/components.dart';
 import 'package:quizup/Containers/containers.dart';
 
 //Bayrak bölümündeki soru kısımları burada olacak
-class BayrakDetailScreen extends StatefulWidget {
-  const BayrakDetailScreen({super.key});
+class MatematikDetailScreen extends StatefulWidget {
+  const MatematikDetailScreen({super.key});
 
   @override
-  State<BayrakDetailScreen> createState() => _BayrakDetailScreenState();
+  State<MatematikDetailScreen> createState() => _MatematikDetailScreenState();
 }
 
-class _BayrakDetailScreenState extends State<BayrakDetailScreen> {
+class _MatematikDetailScreenState extends State<MatematikDetailScreen> {
   int _currentIndex = 0;
-  List<Map<String, dynamic>> _bayrakquestions = [];
+  List<Map<String, dynamic>> _matematikquestions = [];
   bool _isLoading = true;
 
   @override
@@ -25,11 +25,11 @@ class _BayrakDetailScreenState extends State<BayrakDetailScreen> {
   // Firestore'dan soruları çekiyoruz
   Future<void> _loadQuestions() async {
     QuerySnapshot snapshot = await FirebaseFirestore.instance
-        .collection('bayrakquestions')
+        .collection('matematikquestions')
         .get();
 
     setState(() {
-      _bayrakquestions = snapshot.docs
+      _matematikquestions = snapshot.docs
           .map((doc) => doc.data() as Map<String, dynamic>?)
           .where((element) => element != null)
           .cast<Map<String, dynamic>>()
@@ -39,9 +39,9 @@ class _BayrakDetailScreenState extends State<BayrakDetailScreen> {
   }
 
   void _nextQuestion() {
-    if (_bayrakquestions.isEmpty) return; // liste boşsa çık
+    if (_matematikquestions.isEmpty) return; // liste boşsa çık
     setState(() {
-      if (_currentIndex < _bayrakquestions.length - 1) {
+      if (_currentIndex < _matematikquestions.length - 1) {
         _currentIndex++;
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -60,7 +60,7 @@ class _BayrakDetailScreenState extends State<BayrakDetailScreen> {
   }
 
   void _lastQuestion() {
-    if (_bayrakquestions.isEmpty) return; // liste boşsa çık
+    if (_matematikquestions.isEmpty) return; // liste boşsa çık
     setState(() {
       if (_currentIndex > 0) {
         _currentIndex--;
@@ -87,11 +87,10 @@ class _BayrakDetailScreenState extends State<BayrakDetailScreen> {
     }
 
     // Mevcut soru
-    var currentQuestion = _bayrakquestions[_currentIndex];
+    var currentQuestion = _matematikquestions[_currentIndex];
 
     // Null güvenli alanlar
     String question = currentQuestion['question'] ?? 'Soru yok';
-    String image = currentQuestion['image'] ?? '';
     Map<String, dynamic> options = {};
     if (currentQuestion['options'] != null) {
       options = Map<String, dynamic>.from(currentQuestion['options']);
@@ -131,10 +130,6 @@ class _BayrakDetailScreenState extends State<BayrakDetailScreen> {
                     ), */
                   ),
                   const SizedBox(height: 25),
-                  CircleAvatar(
-                    radius: 50,
-                    child: Image.asset('assets/flags/$image.png'),
-                  ),
 
                   Column(
                     children: [
