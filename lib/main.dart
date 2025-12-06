@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:quizup/Screen/screen.dart';
-import 'package:quizup/Service/auth_service.dart';
 import 'package:quizup/firebase_options.dart';
 
 void main() async {
@@ -23,7 +22,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (context) => LoginScreen(),
         '/home': (context) => BottombarScren(),
-        '/register' : (context) => RegisterScreen()
+        '/register' : (context) => RegisterScreen(),
+        '/hakkinda' : (context) => HakkindaScreen(),
       },
     );
   }
