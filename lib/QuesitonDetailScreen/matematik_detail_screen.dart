@@ -120,7 +120,7 @@ class _MatematikDetailScreenState extends State<MatematikDetailScreen> {
                     padding: const EdgeInsets.only(bottom: 12.0,left: 16.0,right: 16.0),
                     child: TextWithShadow(
                       text: currentQuestion['question'],
-                      textColor:Colors.black,
+                      textColor:Colors.cyanAccent,
                       textSize: 18,
                     ),
                     /* Text(

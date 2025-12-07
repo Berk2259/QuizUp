@@ -121,7 +121,7 @@ class _BayrakDetailScreenState extends State<BayrakDetailScreen> {
                     padding: const EdgeInsets.only(bottom: 12.0),
                     child: TextWithShadow(
                       text: currentQuestion['question'],
-                      textColor:Colors.black,
+                      textColor:Colors.cyanAccent,
                       textSize: 18,
                     ),
                     /* Text(

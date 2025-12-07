@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizup/Components/background_page.dart';
+import 'package:quizup/Containers/containers.dart';
 
 class HakkindaScreen extends StatefulWidget {
   const HakkindaScreen({super.key});
@@ -26,19 +27,19 @@ class _HakkindaScreenState extends State<HakkindaScreen> {
         child: Column(
           children: [
             SizedBox(height: 50),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Container(
-                width: double.infinity,
-                height: 50,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.blueGrey.shade200,
-                ),
-                child: Center(child: Text('Uygulama Hakkında')),
-              ),
+            HakkindaContainer(title: 'Uygulama Hakkında', height: 50),
+            HakkindaContainer(
+              title: 'Uygulamadaki Görseller',
+              height: 100,
+              description:
+                  'Uygulamadaki görseller https://www.flaticon.com/ adresinden alınmıştır',
             ),
-            Container()
+            HakkindaContainer(
+              title: 'Uygulamadaki Kullanıcı Bilgileri',
+              height: 100,
+              description:
+                  'Sizlerden yalnızca şifre ve mail alıyoruz bunun dışında herhangi bir veriniz kullanılmamaktadır',
+            ),
           ],
         ),
       ),

@@ -31,7 +31,7 @@ class BayrakScren extends StatelessWidget {
                 child: TextWithShadow(
                   text:
                       'Bayrak tahmin quizine hoşgeldiniz. Bu quiz toplamda 10 sorudan oluşmaktadır. Soruları görmek için devam butonuna tıklayın.',
-                  textColor: Colors.red,
+                  textColor: Colors.cyanAccent,
                   textSize: 20,
                 ),
                 /* Text(

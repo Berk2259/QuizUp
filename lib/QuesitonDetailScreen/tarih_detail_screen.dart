@@ -124,7 +124,7 @@ class _TarihDetailScreenState extends State<TarihDetailScreen> {
                     ),
                     child: TextWithShadow(
                       text: currentQuestion['question'],
-                      textColor: Colors.black,
+                      textColor: Colors.cyanAccent,
                       textSize: 18,
                     ),
                     /* Text(
